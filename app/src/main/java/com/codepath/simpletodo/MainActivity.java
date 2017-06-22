@@ -74,14 +74,15 @@ public class MainActivity extends AppCompatActivity {
         // grab the EditText's content as a String
         String itemText = etNewItem.getText().toString();
         // add the item to the list via the adapter
-        itemsAdapter.add(itemText);
-        // clear the EditText by setting it to an empty String
-        etNewItem.setText("");
-        // store the updated list
-        writeItems();
+        if (!itemText.equals("")) {
+            itemsAdapter.add(itemText);
+            // clear the EditText by setting it to an empty String
+            etNewItem.setText("");
+            // store the updated list
+            writeItems();
         // display a notification to the user
         Toast.makeText(getApplicationContext(), "Item added to list", Toast.LENGTH_SHORT).show();
-
+        }
     }
 
     private void setupListViewListener() {
